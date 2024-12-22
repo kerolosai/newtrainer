@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+name: dd-pipeline
+display_name: Disease Detection Training Pipeline
+description: Disease Detection Training pipeline
+experiment_name: disease-detection-trainer
+
+settings:
+  default_compute: azureml:serverless
+
+jobs:
+  train_component:
+    type: command
+    component: ./train_component.yml
+    inputs:
+      disease_images_test2:
+        type: uri_folder
+        description: azureml://datastores/disease_images/paths/wheat/base_data/Wheat

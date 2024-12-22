@@ -1,0 +1,16 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_component
+display_name: Training Component
+version: 5
+type: command
+inputs:
+  disease_images_test2:
+    type: uri_folder
+    description: azureml://datastores/disease_images/paths/wheat/base_data/Wheat
+code: .
+environment: azureml:AzureML-ACPT-pytorch-1.13-py38-cuda11.7-gpu:10
+command: >
+  bash -c "pip install -r requirements.txt &&
+  mkdir -p ./src/data/base_data &&
+  cp -r ${{inputs.disease_images_test2}} ./src/data/base_data &&
+  python ./src/ml_studio_train.py"
