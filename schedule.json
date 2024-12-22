@@ -1,9 +1,0 @@
-{
-  "name": "daily-schedule",
-  "description": "Daily training schedule",
-  "pipeline_name": "dd-pipeline",
-  "recurrence": {
-    "frequency": "Day",
-    "interval": 1
-  }
-}
